@@ -164,10 +164,19 @@ select option{background:#0c0c12;color:var(--white);}
   border-color:var(--gold);background:var(--gold);
 }
 .opt-indicator::after{
-  content:'';width:6px;height:6px;border-radius:50%;
-  background:var(--bg);opacity:0;transition:opacity .2s;
+  content:'✓';
+  font-size:12px;
+  font-weight:700;
+  color:var(--bg);
+  opacity:0;
+  transition:opacity .2s;
+  line-height:1;
 }
 .opt-card input:checked + .opt-card-inner .opt-indicator::after{opacity:1;}
+.opt-card input:checked + .opt-card-inner .opt-indicator{
+  border-color:var(--gold);
+  background:var(--gold);
+}
 .opt-text{flex:1;}
 .opt-label{font-size:13px;font-weight:500;color:var(--white);line-height:1.4;}
 .opt-desc{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.45;}
