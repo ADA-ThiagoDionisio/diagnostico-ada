@@ -264,6 +264,37 @@ input[type=range]::-webkit-slider-thumb{
   font-size:11px;color:var(--muted);letter-spacing:.5px;
 }
 .page-footer strong{color:var(--gold);}
+
+/* ── SELETOR DE PERFIL ── */
+.profile-select{max-width:640px;margin:0 auto;padding:48px 24px 80px;}
+.profile-select-title{
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,5vw,34px);
+  letter-spacing:1px;text-align:center;margin-bottom:8px;line-height:1.1;
+}
+.profile-select-title span{color:var(--gold);}
+.profile-select-sub{
+  text-align:center;font-size:14px;color:var(--muted);
+  margin-bottom:36px;line-height:1.6;
+}
+.profile-cards{display:flex;flex-direction:column;gap:16px;}
+.profile-card{
+  border:1px solid var(--border);border-radius:14px;
+  padding:24px 22px;cursor:pointer;
+  background:var(--card);transition:all .25s;
+  text-align:left;
+}
+.profile-card:hover{border-color:rgba(212,168,67,.5);background:rgba(212,168,67,.06);transform:translateY(-1px);}
+.profile-card-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:rgba(212,168,67,.12);border:1px solid rgba(212,168,67,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:14px;
+}
+.profile-card-title{
+  font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.5px;
+  color:var(--white);margin-bottom:6px;
+}
+.profile-card-desc{font-size:13px;color:var(--muted);line-height:1.55;}
 </style>
 </head>
 <body>
@@ -271,35 +302,53 @@ input[type=range]::-webkit-slider-thumb{
 <!-- HEADER -->
 <div class="hdr">
   <p class="hdr-sup">Acelerador de Desenvolvimento Acadêmico</p>
-  <h1>SESSÃO<br><span>DIAGNÓSTICA</span></h1>
-  <p class="hdr-sub">Responda com calma. Quanto mais honesto você for, mais útil será nossa conversa.</p>
+  <h1 id="hdr-title">SESSÃO<br><span>DIAGNÓSTICA</span></h1>
+  <p class="hdr-sub" id="hdr-sub">Responda com calma. Quanto mais honesto você for, mais útil será nossa conversa.</p>
   <div class="hdr-bar"></div>
 </div>
 
-<!-- PROGRESS -->
-<div class="progress-wrap" id="progress">
-  <div class="step active" data-step="1">
-    <div class="step-dot">1</div>
-    <span class="step-label">Você</span>
-  </div>
-  <div class="step" data-step="2">
-    <div class="step-dot">2</div>
-    <span class="step-label">Trajetória</span>
-  </div>
-  <div class="step" data-step="3">
-    <div class="step-dot">3</div>
-    <span class="step-label">Objetivo</span>
-  </div>
-  <div class="step" data-step="4">
-    <div class="step-dot">4</div>
-    <span class="step-label">Compromisso</span>
+<!-- ══ SELEÇÃO DE PERFIL ══ -->
+<div class="profile-select" id="profile-select">
+  <p class="profile-select-title">Antes de começar,<br><span>quem é você?</span></p>
+  <p class="profile-select-sub">As perguntas a seguir mudam conforme o seu momento acadêmico.</p>
+  <div class="profile-cards">
+    <div class="profile-card" onclick="selectProfile('aluno')">
+      <div class="profile-card-icon">🎓</div>
+      <p class="profile-card-title">Sou aluno de graduação ou pós-graduação</p>
+      <p class="profile-card-desc">Quero construir currículo, publicar, entrar no mestrado, doutorado ou residência, ou destravar meu TCC.</p>
+    </div>
+    <div class="profile-card" onclick="selectProfile('docente')">
+      <div class="profile-card-icon">🔬</div>
+      <p class="profile-card-title">Sou docente ou pesquisador</p>
+      <p class="profile-card-desc">Quero retomar a pós-graduação, publicar com mais frequência, captar recursos ou organizar minha rotina de pesquisa.</p>
+    </div>
   </div>
 </div>
 
-<main>
+<!-- PROGRESS -->
+<div class="progress-wrap" id="progress" style="display:none;">
+  <div class="step active" data-step="1">
+    <div class="step-dot">1</div>
+    <span class="step-label" id="step-label-1">Você</span>
+  </div>
+  <div class="step" data-step="2">
+    <div class="step-dot">2</div>
+    <span class="step-label" id="step-label-2">Trajetória</span>
+  </div>
+  <div class="step" data-step="3">
+    <div class="step-dot">3</div>
+    <span class="step-label" id="step-label-3">Objetivo</span>
+  </div>
+  <div class="step" data-step="4">
+    <div class="step-dot">4</div>
+    <span class="step-label" id="step-label-4">Compromisso</span>
+  </div>
+</div>
+
+<main style="display:none;" id="main-form">
 
 <!-- ══ SEÇÃO 1: QUEM É VOCÊ ══ -->
-<div class="form-section active" id="sec1">
+<div class="form-section" id="aluno1">
   <p class="section-eyebrow">Passo 1 de 4</p>
   <h2 class="section-title">QUEM É<br><span>VOCÊ</span></h2>
   <p class="section-desc">Informações básicas para eu entender com quem estou conversando antes da sessão.</p>
@@ -364,7 +413,7 @@ input[type=range]::-webkit-slider-thumb{
 </div>
 
 <!-- ══ SEÇÃO 2: TRAJETÓRIA ATUAL ══ -->
-<div class="form-section" id="sec2">
+<div class="form-section" id="aluno2">
   <p class="section-eyebrow">Passo 2 de 4</p>
   <h2 class="section-title">ONDE VOCÊ<br><span>ESTÁ AGORA</span></h2>
   <p class="section-desc">Quero entender o que você já construiu e o que ainda está travado.</p>
@@ -409,7 +458,7 @@ input[type=range]::-webkit-slider-thumb{
 </div>
 
 <!-- ══ SEÇÃO 3: OBJETIVO ══ -->
-<div class="form-section" id="sec3">
+<div class="form-section" id="aluno3">
   <p class="section-eyebrow">Passo 3 de 4</p>
   <h2 class="section-title">ONDE VOCÊ<br><span>QUER CHEGAR</span></h2>
   <p class="section-desc">Quero entender o seu destino para saber se e como posso te ajudar a chegar lá.</p>
@@ -451,7 +500,7 @@ input[type=range]::-webkit-slider-thumb{
 </div>
 
 <!-- ══ SEÇÃO 4: INVESTIMENTO ══ -->
-<div class="form-section" id="sec4">
+<div class="form-section" id="aluno4">
   <p class="section-eyebrow">Passo 4 de 4</p>
   <h2 class="section-title">COMPROMETIMENTO<br><span>E PRÓXIMOS PASSOS</span></h2>
   <p class="section-desc">Quero chegar preparado para a nossa conversa. Essas perguntas me ajudam a entender o seu contexto para que a sessão seja o mais útil possível para você.</p>
@@ -507,6 +556,208 @@ input[type=range]::-webkit-slider-thumb{
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════ -->
+<!-- ══ FLUXO DOCENTE / PESQUISADOR ══ -->
+<!-- ══════════════════════════════════════════ -->
+
+<!-- ══ SEÇÃO 1: QUEM É VOCÊ (DOCENTE) ══ -->
+<div class="form-section" id="docente1">
+  <p class="section-eyebrow">Passo 1 de 4</p>
+  <h2 class="section-title">QUEM É<br><span>VOCÊ</span></h2>
+  <p class="section-desc">Informações básicas para eu entender com quem estou conversando antes da sessão.</p>
+
+  <div class="field">
+    <label>Nome completo <span>*</span></label>
+    <input type="text" id="d-nome" placeholder="Seu nome completo">
+  </div>
+
+  <div class="field">
+    <label>WhatsApp <span>*</span></label>
+    <input type="tel" id="d-whatsapp" placeholder="(xx) 9xxxx-xxxx">
+  </div>
+
+  <div class="field">
+    <label>E-mail <span>*</span></label>
+    <input type="email" id="d-email" placeholder="seu@email.com">
+  </div>
+
+  <div class="field">
+    <label>Instituição onde atua <span>*</span></label>
+    <input type="text" id="d-instituicao" placeholder="Nome da universidade ou instituição">
+  </div>
+
+  <div class="field">
+    <label>Qual é o seu vínculo atual? <span>*</span></label>
+    <select id="d-vinculo">
+      <option value="" disabled selected>Selecione</option>
+      <option>Docente em universidade pública</option>
+      <option>Docente em universidade particular</option>
+      <option>Pesquisador sem vínculo docente</option>
+      <option>Docente afastado ou sem vínculo ativo no momento</option>
+      <option>Outro</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>Qual é a sua titulação atual?</label>
+    <select id="d-titulacao">
+      <option value="" disabled selected>Selecione</option>
+      <option>Graduado</option>
+      <option>Especialista</option>
+      <option>Mestre</option>
+      <option>Doutor</option>
+      <option>Pós-doutor</option>
+      <option>Livre-docente</option>
+    </select>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="goTo(2)">Continuar</button>
+  </div>
+</div>
+
+<!-- ══ SEÇÃO 2: MOMENTO ATUAL (DOCENTE) ══ -->
+<div class="form-section" id="docente2">
+  <p class="section-eyebrow">Passo 2 de 4</p>
+  <h2 class="section-title">ONDE VOCÊ<br><span>ESTÁ AGORA</span></h2>
+  <p class="section-desc">Quero entender o seu momento de pesquisa e o que está travando o seu avanço.</p>
+
+  <div class="field">
+    <label>Qual dessas situações mais te representa hoje? <span>*</span></label>
+    <div class="card-grid" style="margin-top:10px;">
+      <label class="opt-card check"><input type="checkbox" name="d-situacao"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Minha pós-graduação está parada</p><p class="opt-desc">Comecei mestrado ou doutorado e precisei interromper por algum motivo.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-situacao"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Quero entrar na pós-graduação agora</p><p class="opt-desc">Ainda não comecei, mas quero estruturar isso na minha carreira.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-situacao"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Publico pouco ou de forma irregular</p><p class="opt-desc">Tenho vínculo acadêmico, mas minha produção científica está aquém do que gostaria.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-situacao"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Preciso captar recursos</p><p class="opt-desc">Quero submeter projetos para FAPESP, CNPq ou outras agências de fomento.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-situacao"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Estou sobrecarregado</p><p class="opt-desc">Entre aulas, orientações e vida pessoal, não sobra tempo real para pesquisar.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-situacao"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Falta rede de colaboração</p><p class="opt-desc">Não tenho parceiros de pesquisa qualificados para os projetos que quero tocar.</p></div></div></label>
+    </div>
+  </div>
+
+  <div class="field-divider"></div>
+
+  <div class="field">
+    <label>Qual é a sua maior dificuldade hoje? <span>*</span></label>
+    <div class="card-grid" style="margin-top:10px;">
+      <label class="opt-card check"><input type="checkbox" name="d-dificuldade"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Não sei por onde retomar</p><p class="opt-desc">Perdi o fio da meada e não sei qual é o próximo passo prático.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-dificuldade"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Dificuldade em publicar</p><p class="opt-desc">Tenho dados ou ideias, mas travo na hora de escrever e submeter.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-dificuldade"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Pareceres de revisores me travam</p><p class="opt-desc">Recebo pedidos de revisão e não consigo avançar com as respostas.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-dificuldade"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Não sei escolher orientador</p><p class="opt-desc">Quero retomar ou iniciar a pós, mas não sei como encontrar o orientador certo.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-dificuldade"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Falta de tempo real</p><p class="opt-desc">Sei o que fazer, mas não consigo encaixar isso na rotina.</p></div></div></label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Descreva sua situação com suas próprias palavras.</label>
+    <textarea id="d-situacao-texto" placeholder="Conte um pouco mais sobre onde você está e o que está te travando. Quanto mais detalhes, mais preparado chego para a nossa conversa." maxlength="600" oninput="updateChar(this,'d-char1',600)"></textarea>
+    <p class="char-info" id="d-char1">0 / 600</p>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goTo(1)">Voltar</button>
+    <button class="btn btn-primary" onclick="goTo(3)">Continuar</button>
+  </div>
+</div>
+
+<!-- ══ SEÇÃO 3: OBJETIVO (DOCENTE) ══ -->
+<div class="form-section" id="docente3">
+  <p class="section-eyebrow">Passo 3 de 4</p>
+  <h2 class="section-title">ONDE VOCÊ<br><span>QUER CHEGAR</span></h2>
+  <p class="section-desc">Quero entender o seu destino para saber se e como posso te ajudar a chegar lá.</p>
+
+  <div class="field">
+    <label>Qual é o seu principal objetivo agora? <span>*</span></label>
+    <div class="card-grid" style="margin-top:10px;">
+      <label class="opt-card check"><input type="checkbox" name="d-objetivo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Retomar e concluir a pós-graduação</p><p class="opt-desc">Quero terminar o mestrado ou doutorado que ficou parado.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-objetivo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Iniciar uma pós-graduação</p><p class="opt-desc">Quero entrar em um programa de mestrado ou doutorado agora.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-objetivo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Aumentar minha frequência de publicação</p><p class="opt-desc">Quero um método replicável para publicar com mais regularidade.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-objetivo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Conseguir financiamento para pesquisa</p><p class="opt-desc">Quero estruturar e submeter um projeto competitivo para agências de fomento.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-objetivo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Organizar minha rotina de pesquisa</p><p class="opt-desc">Quero um método sustentável para pesquisar mesmo com pouco tempo disponível.</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-objetivo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Construir parcerias de pesquisa</p><p class="opt-desc">Quero encontrar colaboradores qualificados no Brasil ou no exterior.</p></div></div></label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Em quanto tempo você quer alcançar esse objetivo?</label>
+    <select id="d-prazo">
+      <option value="" disabled selected>Selecione</option>
+      <option>Nos próximos 3 meses</option>
+      <option>Nos próximos 6 meses</option>
+      <option>Em até 1 ano</option>
+      <option>Em mais de 1 ano</option>
+      <option>Não tenho prazo definido</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>O que você já tentou fazer para resolver isso?</label>
+    <textarea id="d-tentativas" placeholder="Já pesquisou, já pediu ajuda, já tentou alguma abordagem? Conte o que funcionou e o que não funcionou." maxlength="500" oninput="updateChar(this,'d-char2',500)"></textarea>
+    <p class="char-info" id="d-char2">0 / 500</p>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goTo(2)">Voltar</button>
+    <button class="btn btn-primary" onclick="goTo(4)">Continuar</button>
+  </div>
+</div>
+
+<!-- ══ SEÇÃO 4: COMPROMETIMENTO (DOCENTE) ══ -->
+<div class="form-section" id="docente4">
+  <p class="section-eyebrow">Passo 4 de 4</p>
+  <h2 class="section-title">COMPROMETIMENTO<br><span>E PRÓXIMOS PASSOS</span></h2>
+  <p class="section-desc">Quero chegar preparado para a nossa conversa. Essas perguntas me ajudam a entender o seu contexto para que a sessão seja o mais útil possível para você.</p>
+
+  <div class="field">
+    <label>Quanto tempo por semana você consegue dedicar de forma realista? <span>*</span></label>
+    <div class="card-grid" style="margin-top:10px;">
+      <label class="opt-card check"><input type="checkbox" name="d-tempo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Menos de 3 horas</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-tempo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Entre 3 e 6 horas</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-tempo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Entre 6 e 10 horas</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-tempo"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Mais de 10 horas</p></div></div></label>
+    </div>
+  </div>
+
+  <div class="field-divider"></div>
+
+  <div class="field">
+    <label>Você tem autonomia para decidir sobre um investimento assim, ou depende de mais alguém?</label>
+    <div class="card-grid" style="margin-top:10px;">
+      <label class="opt-card check"><input type="checkbox" name="d-autonomia"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Sim, decido sozinho</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-autonomia"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Preciso conversar com cônjuge ou família antes</p></div></div></label>
+      <label class="opt-card check"><input type="checkbox" name="d-autonomia"><div class="opt-card-inner"><div class="opt-indicator"></div><div class="opt-text"><p class="opt-label">Não sei ainda</p></div></div></label>
+    </div>
+  </div>
+
+  <div class="field-divider"></div>
+
+  <div class="field">
+    <label>Qual é o seu nível de comprometimento com essa retomada agora?</label>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:16px;margin-top:-4px;">Arraste para indicar seu nível de disposição.</p>
+    <div class="range-wrap">
+      <input type="range" id="d-investimento" min="0" max="100" value="50"
+        oninput="updateRange(this,'d-range-label')">
+      <div class="range-labels">
+        <span>Ainda estou explorando</span>
+        <span>Pronto para agir</span>
+      </div>
+      <div class="range-value" id="d-range-label">Moderado</div>
+    </div>
+  </div>
+
+  <div class="field-divider"></div>
+
+  <div class="field">
+    <label>Alguma informação adicional que queira compartilhar antes da nossa conversa?</label>
+    <textarea id="d-adicional" placeholder="Qualquer coisa que você acha importante eu saber antes de nos falarmos. Sem filtro." maxlength="500" oninput="updateChar(this,'d-char3',500)"></textarea>
+    <p class="char-info" id="d-char3">0 / 500</p>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="goTo(3)">Voltar</button>
+    <button class="btn btn-primary" onclick="submitDocente()">Enviar e abrir WhatsApp</button>
+  </div>
+</div>
+
 <!-- ══ SUCESSO ══ -->
 <div class="success" id="success">
   <div class="success-icon">✓</div>
@@ -529,16 +780,50 @@ input[type=range]::-webkit-slider-thumb{
 
 <script>
 let current = 1;
+let profile = null; // 'aluno' ou 'docente'
+
+const ALUNO_STEPS = ['Você','Trajetória','Objetivo','Compromisso'];
+const DOCENTE_STEPS = ['Você','Momento','Objetivo','Compromisso'];
+
+const ALUNO_TITLES = {
+  1:{eyebrow:'Passo 1 de 4', title:'QUEM É<br><span>VOCÊ</span>', desc:'Informações básicas para eu entender com quem estou conversando antes da sessão.'},
+  2:{eyebrow:'Passo 2 de 4', title:'ONDE VOCÊ<br><span>ESTÁ AGORA</span>', desc:'Quero entender o que você já construiu e o que ainda está travado.'},
+  3:{eyebrow:'Passo 3 de 4', title:'ONDE VOCÊ<br><span>QUER CHEGAR</span>', desc:'Quero entender o seu destino para saber se e como posso te ajudar a chegar lá.'},
+  4:{eyebrow:'Passo 4 de 4', title:'COMPROMETIMENTO<br><span>E PRÓXIMOS PASSOS</span>', desc:'Quero chegar preparado para a nossa conversa. Essas perguntas me ajudam a entender o seu contexto para que a sessão seja o mais útil possível para você.'}
+};
+
+function selectProfile(p){
+  profile = p;
+  document.getElementById('profile-select').style.display='none';
+  document.getElementById('progress').style.display='flex';
+  document.getElementById('main-form').style.display='block';
+
+  // Ajustar labels da barra de progresso
+  const stepsArr = p === 'aluno' ? ALUNO_STEPS : DOCENTE_STEPS;
+  stepsArr.forEach((label,i)=>{
+    document.getElementById('step-label-'+(i+1)).textContent = label;
+  });
+
+  // Ajustar cabeçalho
+  if(p === 'docente'){
+    document.getElementById('hdr-sub').textContent = 'Responda com calma. Quanto mais honesto você for, mais útil será nossa conversa.';
+  }
+
+  goTo(1);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
 function goTo(n){
-  document.getElementById('sec'+current)?.classList.remove('active');
+  // Esconder todas as seções de ambos os perfis
+  document.querySelectorAll('.form-section').forEach(el=>el.classList.remove('active'));
+
   document.querySelectorAll('.step').forEach((s,i)=>{
     s.classList.remove('active','done');
     if(i+1 < n) s.classList.add('done');
     if(i+1 === n) s.classList.add('active');
   });
   current = n;
-  document.getElementById('sec'+n)?.classList.add('active');
+  document.getElementById(profile+n)?.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -594,7 +879,7 @@ function submit(){
   const whatsappUrl = `https://wa.me/5514998133326?text=${encoded}`;
 
   // Mostrar tela de sucesso
-  document.getElementById('sec4').classList.remove('active');
+  document.getElementById('aluno4').classList.remove('active');
   document.getElementById('progress').style.display='none';
   document.getElementById('success').classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
@@ -609,12 +894,77 @@ function updateChar(el,id,max){
   document.getElementById(id).textContent = el.value.length + ' / ' + max;
 }
 
-function updateRange(el){
+function updateRange(el,targetId){
+  targetId = targetId || 'range-label';
   const v = el.value;
   el.style.setProperty('--val', v+'%');
   const labels = ['Ainda explorando','Começando a me mover','Comprometido','Muito comprometido','Pronto para agir'];
   const idx = Math.round(v/25);
-  document.getElementById('range-label').textContent = labels[idx];
+  document.getElementById(targetId).textContent = labels[idx];
+}
+
+function submitDocente(){
+  const nome = document.getElementById('d-nome').value || '';
+  const whatsapp = document.getElementById('d-whatsapp').value || '';
+  const email = document.getElementById('d-email').value || '';
+  const instituicao = document.getElementById('d-instituicao').value || '';
+  const vinculo = document.getElementById('d-vinculo').value || '';
+  const titulacao = document.getElementById('d-titulacao').value || '';
+
+  const situacoes = [...document.querySelectorAll('input[name="d-situacao"]:checked')].map(el => el.parentElement.querySelector('.opt-label').textContent);
+  const situacaoTexto = situacoes.join(', ') || '';
+
+  const dificuldades = [...document.querySelectorAll('input[name="d-dificuldade"]:checked')].map(el => el.parentElement.querySelector('.opt-label').textContent);
+  const dificuldadeTexto = dificuldades.join(', ') || '';
+
+  const situacaoLivre = document.getElementById('d-situacao-texto').value || '';
+
+  const objetivos = [...document.querySelectorAll('input[name="d-objetivo"]:checked')].map(el => el.parentElement.querySelector('.opt-label').textContent);
+  const objetivoTexto = objetivos.join(', ') || '';
+  const prazo = document.getElementById('d-prazo').value || '';
+  const tentativas = document.getElementById('d-tentativas').value || '';
+
+  const tempos = [...document.querySelectorAll('input[name="d-tempo"]:checked')].map(el => el.parentElement.querySelector('.opt-label').textContent);
+  const tempoTexto = tempos.join(', ') || '';
+
+  const autonomias = [...document.querySelectorAll('input[name="d-autonomia"]:checked')].map(el => el.parentElement.querySelector('.opt-label').textContent);
+  const autonomiaTexto = autonomias.join(', ') || '';
+
+  const rangeVal = document.getElementById('d-range-label').textContent || '';
+  const adicional = document.getElementById('d-adicional').value || '';
+
+  const msg = `*Novo Pré-Diagnóstico ADA — DOCENTE/PESQUISADOR*
+
+*Nome:* ${nome}
+*Instituição:* ${instituicao}
+*Vínculo:* ${vinculo}
+*Titulação:* ${titulacao}
+
+*Situação atual:* ${situacaoTexto}
+*Maior dificuldade:* ${dificuldadeTexto}
+*Descrição livre:* ${situacaoLivre}
+
+*Objetivo:* ${objetivoTexto}
+*Prazo:* ${prazo}
+*O que já tentou:* ${tentativas}
+
+*Tempo disponível por semana:* ${tempoTexto}
+*Autonomia para decidir:* ${autonomiaTexto}
+*Comprometimento:* ${rangeVal}
+
+*Informações adicionais:* ${adicional}`;
+
+  const encoded = encodeURIComponent(msg);
+  const whatsappUrl = `https://wa.me/5514998133326?text=${encoded}`;
+
+  document.getElementById('docente4').classList.remove('active');
+  document.getElementById('progress').style.display='none';
+  document.getElementById('success').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  setTimeout(() => {
+    window.open(whatsappUrl, '_blank');
+  }, 1000);
 }
 
 // mostrar campo outro curso
@@ -625,6 +975,7 @@ document.getElementById('curso').addEventListener('change', function(){
 
 // init range
 document.getElementById('investimento').style.setProperty('--val','50%');
+document.getElementById('d-investimento').style.setProperty('--val','50%');
 </script>
 </body>
 </html>
