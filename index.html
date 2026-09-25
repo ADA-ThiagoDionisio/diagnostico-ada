@@ -124,6 +124,29 @@ section{padding:80px 24px;}
 .sec-text{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:16px;}
 .sec-text strong{color:var(--white);font-weight:500;}
 
+/* ── SELETOR DE PÚBLICO ── */
+.audience-section{
+  padding:0 24px 80px;
+  background:#07070d;
+}
+.audience-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  max-width:900px;margin:0 auto;
+}
+@media(max-width:640px){.audience-grid{grid-template-columns:1fr;}}
+.audience-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:32px 28px;text-align:left;
+  transition:border-color .2s;
+}
+.audience-card:hover{border-color:rgba(212,168,67,.35);}
+.audience-icon{font-size:26px;display:block;margin-bottom:16px;}
+.audience-card h3{
+  font-family:'Bebas Neue',sans-serif;font-size:22px;
+  letter-spacing:.5px;color:var(--white);line-height:1.15;margin-bottom:10px;
+}
+.audience-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+
 /* ── O QUE É O ADA ── */
 .ada-section{
   background:
@@ -325,10 +348,28 @@ footer a:hover{color:var(--gold);}
 <section class="hero">
   <p class="hero-sup">Acelerador de Desenvolvimento Acadêmico</p>
   <h1>A FACULDADE<br>ENSINA O <span>CONTEÚDO.</span><br>O ADA ENSINA<br>O <span>CAMINHO.</span></h1>
-  <p class="hero-sub">Para graduandos e pós-graduandos da área da saúde que querem construir uma trajetória acadêmica <strong>com estratégia, direção e propósito.</strong></p>
+  <p class="hero-sub">Para quem constrói ciência na área da saúde, da graduação à docência. <strong>Estratégia, direção e propósito</strong> em qualquer etapa da trajetória.</p>
   <a href="formulario_sessao_ada.html" class="hero-cta">Quero minha sessão diagnóstica gratuita</a>
   <p class="hero-cta-note">Gratuita · Sem compromisso · Respondemos em até 24h</p>
   <div class="hero-bar"></div>
+</section>
+
+<!-- SELETOR DE PÚBLICO -->
+<section class="audience-section">
+  <div class="sec-inner">
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="audience-icon">🎓</span>
+        <h3>Aluno de graduação<br>ou pós-graduação</h3>
+        <p>Quer construir currículo, publicar, entrar no mestrado, doutorado ou residência, com método e sem desperdiçar tempo.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">🔬</span>
+        <h3>Docente<br>ou pesquisador</h3>
+        <p>Quer retomar a pós-graduação, publicar com mais frequência, captar recursos ou organizar a rotina de pesquisa.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- O QUE É O ADA -->
@@ -337,28 +378,28 @@ footer a:hover{color:var(--gold);}
     <p class="sec-eyebrow">O que é o ADA</p>
     <h2 class="sec-title">ESTRATÉGIA PARA<br><span>QUEM QUER MAIS</span></h2>
     <div class="sec-bar"></div>
-    <p class="sec-text">O ADA não é uma mentoria genérica. É um acompanhamento personalizado criado para estudantes da área da saúde que querem construir uma trajetória acadêmica sólida, sem desperdiçar tempo, oportunidades e potencial.</p>
-    <p class="sec-text"><strong>Inteligência e dedicação, por si só, não garantem uma trajetória extraordinária.</strong> Sem direção, até os alunos mais talentosos chegam ao fim da graduação sem saber o que fazer com o que construíram. O ADA existe para mudar isso.</p>
+    <p class="sec-text">O ADA não é uma mentoria genérica. É um acompanhamento personalizado para quem constrói ciência na área da saúde, seja na graduação, na pós-graduação ou já como docente e pesquisador.</p>
+    <p class="sec-text"><strong>Inteligência e dedicação, por si só, não garantem uma trajetória extraordinária.</strong> Sem direção, até os alunos mais talentosos chegam ao fim da graduação sem saber o que fazer com o que construíram. E até pesquisadores experientes travam quando a rotina engole o tempo de pensar em pesquisa. O ADA existe para mudar isso, em qualquer ponto da jornada.</p>
     <div class="ada-grid">
       <div class="ada-card">
         <span class="ada-icon">🎯</span>
         <h3>Direção</h3>
-        <p>Você sabe o que quer alcançar. O ADA te ajuda a traçar o caminho mais direto até lá, independente do semestre em que você está.</p>
+        <p>Você sabe o que quer alcançar. O ADA te ajuda a traçar o caminho mais direto até lá, esteja você no primeiro semestre ou retomando um doutorado parado.</p>
       </div>
       <div class="ada-card">
         <span class="ada-icon">🗺️</span>
         <h3>Estratégia</h3>
-        <p>IC, TCC, publicação, bolsa, pós-graduação, residência: cada etapa tem uma lógica. O ADA te mostra qual priorizar e como executar.</p>
+        <p>IC, TCC, publicação, bolsa, pós-graduação, residência, captação de recursos: cada etapa tem uma lógica. O ADA te mostra qual priorizar e como executar.</p>
       </div>
       <div class="ada-card">
         <span class="ada-icon">🧭</span>
         <h3>Acompanhamento</h3>
-        <p>Não é uma aula nem um curso. É um acompanhamento próximo com quem já orientou cerca de 100 estudantes em diferentes trajetórias.</p>
+        <p>Não é uma aula nem um curso. É um acompanhamento próximo com quem já orientou cerca de 100 estudantes e mantém parcerias ativas de pesquisa com docentes da USP e da UNESP.</p>
       </div>
       <div class="ada-card">
         <span class="ada-icon">🔓</span>
         <h3>Autonomia</h3>
-        <p>O objetivo não é criar dependência. É formar profissionais academicamente autônomos, capazes de continuar evoluindo por conta própria.</p>
+        <p>O objetivo não é criar dependência. É formar profissionais e pesquisadores academicamente autônomos, capazes de continuar evoluindo por conta própria.</p>
       </div>
     </div>
   </div>
@@ -373,13 +414,14 @@ footer a:hover{color:var(--gold);}
     <p class="manifesto-quote">Antes de buscar respostas, aprenda a fazer as perguntas certas.</p>
     <p class="sec-text">Durante toda a minha trajetória acadêmica, percebi um padrão que se repetia constantemente. Alunos extremamente inteligentes, dedicados e esforçados deixavam de conquistar oportunidades importantes <strong>não por falta de capacidade, mas porque ninguém havia lhes mostrado o caminho.</strong></p>
     <p class="sec-text">Enquanto alguns descobriam por acaso como ingressar em grupos de pesquisa, escolher um bom orientador, publicar artigos ou construir um currículo competitivo, muitos outros aprendiam essas lições tarde demais.</p>
-    <p class="sec-text">Depois de orientar aproximadamente 100 estudantes e acompanhar diferentes trajetórias, compreendi que <strong>o verdadeiro problema era a falta de estratégia.</strong> Foi nesse momento que nasceu o ADA.</p>
+    <p class="sec-text">O mesmo padrão se repete mais adiante na carreira. <strong>Docentes e pesquisadores talentosos travam pela mesma falta de estratégia</strong>, agora disfarçada de falta de tempo: uma pós-graduação que ficou parada, uma produção científica abaixo do potencial, um projeto de captação que nunca sai do papel.</p>
+    <p class="sec-text">Depois de orientar aproximadamente 100 estudantes, acompanhar diferentes trajetórias e construir parcerias de pesquisa com docentes da USP e da UNESP, compreendi que <strong>o verdadeiro problema, em qualquer etapa, é a falta de estratégia.</strong> Foi nesse momento que nasceu o ADA.</p>
     <div class="manifesto-items">
-      <div class="manifesto-item"><div class="manifesto-dot"></div><p>Acreditamos que <strong>nenhum estudante deveria precisar descobrir sozinho</strong> aquilo que poderia ter aprendido logo no início da graduação.</p></div>
-      <div class="manifesto-item"><div class="manifesto-dot"></div><p>Acreditamos que <strong>estratégia pode ser aprendida</strong> e autonomia pode ser desenvolvida.</p></div>
+      <div class="manifesto-item"><div class="manifesto-dot"></div><p>Acreditamos que <strong>ninguém deveria precisar descobrir sozinho</strong> aquilo que poderia ter aprendido logo no início, seja na graduação ou na carreira docente.</p></div>
+      <div class="manifesto-item"><div class="manifesto-dot"></div><p>Acreditamos que <strong>estratégia pode ser aprendida</strong> e autonomia pode ser desenvolvida, em qualquer momento da trajetória.</p></div>
       <div class="manifesto-item"><div class="manifesto-dot"></div><p>Acreditamos que <strong>um bom mentor não cria dependência.</strong> Ele forma pessoas capazes de caminhar com segurança e pensamento crítico.</p></div>
-      <div class="manifesto-item"><div class="manifesto-dot"></div><p>Acreditamos que <strong>publicações, currículos fortes e aprovações em residência e pós-graduação são consequências</strong> de uma trajetória construída com clareza e constância.</p></div>
-      <div class="manifesto-item"><div class="manifesto-dot"></div><p>Acreditamos que <strong>cada jornada é única.</strong> O ADA não conduz todos pelo mesmo caminho. Constrói estratégias personalizadas para cada objetivo.</p></div>
+      <div class="manifesto-item"><div class="manifesto-dot"></div><p>Acreditamos que <strong>publicações, currículos fortes, aprovações e captação de recursos são consequências</strong> de uma trajetória construída com clareza e constância.</p></div>
+      <div class="manifesto-item"><div class="manifesto-dot"></div><p>Acreditamos que <strong>cada jornada é única.</strong> O ADA não conduz todos pelo mesmo caminho. Constrói estratégias personalizadas para cada objetivo, do primeiro semestre à livre-docência.</p></div>
     </div>
   </div>
 </section>
@@ -393,8 +435,9 @@ footer a:hover{color:var(--gold);}
     <div class="traj-grid">
       <div class="traj-text">
         <p class="sec-text">Mestre e Doutor em Ciências Fisiológicas pela UFSCar. Pesquisador da Faculdade de Odontologia de Bauru, onde atuo no grupo de pesquisa de <strong>Farmacologia, Fisiologia e Genética há 24 anos.</strong></p>
+        <p class="sec-text">Além da orientação de estudantes, atuo como <strong>revisor científico de periódicos internacionais</strong> e sou <strong>pesquisador associado em auxílios à pesquisa da FAPESP</strong>. Mantenho parcerias concretas com docentes da USP e da UNESP, que resultam em publicações conjuntas e na formação de recursos humanos, de alunos de graduação a pós-graduandos.</p>
         <p class="sec-text">Ao longo da minha carreira, tive o privilégio de acompanhar a formação de estudantes em diferentes momentos de suas trajetórias: da iniciação científica ao doutorado, da graduação à atuação internacional.</p>
-        <p class="sec-text"><strong>Mais importante do que qualquer número é ver alunos conquistando oportunidades que, muitas vezes, pareciam distantes quando iniciaram suas jornadas.</strong></p>
+        <p class="sec-text"><strong>Mais importante do que qualquer número é ver alunos e colegas pesquisadores conquistando oportunidades que, muitas vezes, pareciam distantes quando começaram.</strong></p>
         <p class="sec-text">Ex-alunos atuam hoje em universidades, hospitais, laboratórios, empresas, programas de pós-graduação e diferentes áreas da saúde, no Brasil e no exterior.</p>
       </div>
       <div class="traj-numbers">
@@ -411,8 +454,8 @@ footer a:hover{color:var(--gold);}
           <p class="num-label">Publicações científicas nacionais e internacionais</p>
         </div>
         <div class="num-card">
-          <p class="num-value">USP</p>
-          <p class="num-label">Mestre e Doutor em Ciências Fisiológicas · UFSCar · Pesquisador FOB-USP</p>
+          <p class="num-value">FAPESP</p>
+          <p class="num-label">Pesquisador associado em auxílios à pesquisa</p>
         </div>
       </div>
     </div>
@@ -423,9 +466,9 @@ footer a:hover{color:var(--gold);}
 <section class="dep-section">
   <div class="sec-inner">
     <p class="sec-eyebrow">Resultados reais · ADA</p>
-    <h2 class="sec-title">CINCO DESTINOS.<br><span>UM PONTO EM COMUM.</span></h2>
+    <h2 class="sec-title">SEIS DESTINOS.<br><span>UM PONTO EM COMUM.</span></h2>
     <div class="sec-bar"></div>
-    <p class="sec-text">Trajetórias diferentes. Áreas diferentes. O que têm em comum: decidiram construir com estratégia no momento certo.</p>
+    <p class="sec-text">Trajetórias diferentes. Áreas diferentes. Momentos diferentes da carreira. O que têm em comum: decidiram construir com estratégia no momento certo.</p>
     <div class="dep-grid">
       <div class="dep-card">
         <div class="dep-header">
@@ -510,7 +553,7 @@ footer a:hover{color:var(--gold);}
     <p class="sec-eyebrow">Próximo passo</p>
     <h2 class="sec-title">ANTES DE BUSCAR<br>RESPOSTAS, APRENDA A<br>FAZER AS <span>PERGUNTAS CERTAS.</span></h2>
     <div class="sec-bar"></div>
-    <p class="cta-desc">A sessão diagnóstica é gratuita. Em até 24 horas entro em contato para agendar uma conversa honesta sobre onde você está e o que pode construir a partir daqui.</p>
+    <p class="cta-desc">A sessão diagnóstica é gratuita, para alunos e para docentes e pesquisadores. Em até 24 horas entro em contato para agendar uma conversa honesta sobre onde você está e o que pode construir a partir daqui.</p>
     <a href="formulario_sessao_ada.html" class="cta-btn">Quero minha sessão diagnóstica gratuita</a>
     <p class="cta-note">Gratuita · Sem compromisso · Respondemos em até 24h</p>
   </div>
